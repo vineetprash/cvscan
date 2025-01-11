@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Uploads</title>
+  <script src="https://unpkg.com/htmx.org"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans h-screen flex flex-col items-center">
+
+  <!-- Container -->
+  <div class="w-full max-w-2xl p-6 bg-gray-800 shadow-lg rounded-lg mt-8">
+    <h1 class="text-2xl font-semibold mb-6 text-center">Upload PDFs</h1>
+
+    <!-- File Upload Form -->
+    <form 
+      hx-post="/files/upload" 
+      hx-trigger="submit" 
+      hx-target="#fileList" 
+      hx-swap="beforeend" 
+      enctype="multipart/form-data" 
+      class="flex flex-col gap-4">
+      <input 
+        type="file" 
+        name="files" 
+        multiple 
+        accept=".pdf" 
+        class="file-input w-full border border-gray-600 bg-gray-700 rounded-md p-2 text-gray-300">
+      <button 
+        type="submit" 
+        class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition">
+        Upload
+      </button>
+    </form>
+
+    <hr class="border-gray-700 my-6">
+
+    <!-- Button to load files -->
+    <div class="flex gap-4">
+       <button 
+       hx-get="/files/list" 
+       hx-target="#fileList" 
+       hx-swap="innerHTML" 
+       class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition mb-4">
+       Load Files
+      </button>
+      <button
+        onclick="window.location.href=`/results`"
+        class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition mb-4"
+      >
+      Parse resumes
+      </button>
+    </div>
+
+    <!-- Uploaded file list -->
+    <ul id="fileList" class="space-y-3">
+      <!-- Dynamically updated content -->
+      <!-- Example File -->
+      <!-- <li class="bg-gray-700 p-3 rounded-md flex items-center justify-between">
+        <span>example.pdf</span>
+        <a href="/path-to-pdf" target="_blank" class="text-pink-800 hover:underline">View</a>
+      </li> -->
+    </ul>
+  </div>
+
+
+</body>
+</html>

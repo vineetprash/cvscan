@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
+    "dev": "node build/server/index.js",
     "build": "npx tsc",
+    "build:app" : "xcopy server\\views build\\server\\views /E /I",
+    "postbuild": "xcopy server\\views build\\server\\views /E /I",
     "watch": "npx tsc --watch",
     "start": "npx tsc && node build/index.js"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/express-fileupload": "^1.5.1",
     "@types/node": "^22.10.2",
     "@types/pdf-parse": "^1.1.4",
     "typescript": "^5.7.2"
@@ -15,6 +20,9 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.33.1",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-fileupload": "^1.5.1",
+    "nodemon": "^3.1.9",
     "pdf-parse": "^1.1.1",
     "pdf2json": "^3.1.4"
   }
