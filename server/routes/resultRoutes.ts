@@ -3,14 +3,14 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import path from "path"
 import { processResumes } from '../..';
+import { inputDir, outputDir } from '..';
 
 dotenv.config();
 
 const router = Router();
 // Route to process resumes
-router.post('/process-resumes', async (req: any, res: any) => {
-    const inputDir = process.env.DIR_INPUT || "input";
-    const outputDir = process.env.DIR_OUTPUT || "output";
+router.get('/process-resumes', async (req: any, res: any) => {
+    
   
     // Ensure the directories exist
     if (!fs.existsSync(inputDir)) {
@@ -28,7 +28,7 @@ router.post('/process-resumes', async (req: any, res: any) => {
     }
   
     try {
-      await processResumes(inputDir, outputDir);
+    //   await processResumes(inputDir, outputDir);
   
       // Generate the link to the processed file (processed.csv)
       const fileUrl = `/output/processed.csv`;

@@ -8,8 +8,8 @@ import resultRoutes from './routes/resultRoutes';
 const app = express();
 
 const PORT = 3000;
-const inputDir = path.join(__dirname, 'input');  // Absolute path to input folder
-const outputDir = path.join(__dirname, 'output');  // Absolute path to output folder
+export const inputDir = path.join(__dirname, 'input');  // Absolute path to input folder
+export const outputDir = path.join(__dirname, 'output');  // Absolute path to output folder
 // Middleware
 app.use(express.static('views'));
 app.use('/input', express.static(inputDir)); // Serve uploaded files
