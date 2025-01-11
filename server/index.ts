@@ -6,12 +6,14 @@ import resultRoutes from './routes/resultRoutes';
 
 
 const app = express();
-const PORT = 3000;
 
+const PORT = 3000;
+const inputDir = path.join(__dirname, 'input');  // Absolute path to input folder
+const outputDir = path.join(__dirname, 'output');  // Absolute path to output folder
 // Middleware
 app.use(express.static('views'));
-app.use('/input', express.static('input')); // Serve uploaded files
-app.use('/output', express.static('ouput')); // Serve uploaded files
+app.use('/input', express.static(inputDir)); // Serve uploaded files
+app.use('/output', express.static(outputDir)); // Serve uploaded files
 app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

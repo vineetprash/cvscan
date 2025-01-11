@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 const router = Router();
-const uploadDir = path.join(__dirname, '../uploads');
+const uploadDir = path.join(__dirname, '../../input');
 
 // Ensure the uploads directory exists
 if (!fs.existsSync(uploadDir)) {
@@ -12,8 +12,8 @@ if (!fs.existsSync(uploadDir)) {
 
 // Generate HTML snippet for a single file
 const generateFileHtml = (fileName: string): string => {
-  const filePath = `input/${fileName}`;
-  return `<li><span class="cursor-pointer" onclick="window.location.href= ${fileName}" target="_blank">${fileName}</span></li>`;
+  const filePath = `/input/${fileName}`;
+  return `<li><span class="cursor-pointer" onclick="window.location.href='${filePath}'; " target="_blank">${fileName}</span></li>`;
 };
 
 router.get('/pdf/:filename', (req: any, res: any) => {
