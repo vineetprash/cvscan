@@ -12,8 +12,8 @@ if (!fs.existsSync(uploadDir)) {
 
 // Generate HTML snippet for a single file
 const generateFileHtml = (fileName: string): string => {
-  const filePath = `files/pdf/${fileName}`;
-  return `<li><span hx-get = ${filePath} hx-target = "#pdfviewer" hx-swap="innerHTML" target="_blank">${fileName}</span></li>`;
+  const filePath = `input/${fileName}`;
+  return `<li><span class="cursor-pointer" onclick="window.location.href= ${fileName}" target="_blank">${fileName}</span></li>`;
 };
 
 router.get('/pdf/:filename', (req: any, res: any) => {

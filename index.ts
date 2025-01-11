@@ -9,7 +9,7 @@ async function checkResume(pdfPath: string) {
   console.log(`Text: ${text}, ${text.trim().length}`);
 }
 
-async function processResumes(inputDir: string, outputDir: string) {
+export async function processResumes(inputDir: string, outputDir: string) {
   console.log("Process resumes from", inputDir, "to", outputDir);
 
   // get all pdf files in input directory
@@ -101,7 +101,7 @@ async function main() {
   }
 
 
-  processResumes(inputDir, outputDir);
+  // processResumes(inputDir, outputDir);
 
 }
 
