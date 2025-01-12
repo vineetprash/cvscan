@@ -13,6 +13,39 @@
   <div class="w-full max-w-2xl p-6 bg-gray-800 shadow-lg rounded-lg mt-8">
     <h1 class="text-2xl font-semibold mb-6 text-center">Upload PDFs</h1>
 
+    <!-- Directory Configuration Form -->
+    <form 
+      hx-post="/config/update" 
+      hx-trigger="submit" 
+      hx-target="#configStatus" 
+      hx-swap="innerHTML" 
+      class="flex flex-col gap-4">
+      <label for="inputDir" class="text-gray-400">Input Directory</label>
+      <input 
+        type="text" 
+        id="inputDir" 
+        name="inputDir" 
+        placeholder="Optional: Enter input directory path" 
+        class="w-full border border-gray-600 bg-gray-700 rounded-md p-2 text-gray-300">
+
+      <label for="outputDir" class="text-gray-400">Output Directory</label>
+      <input 
+        type="text" 
+        id="outputDir" 
+        name="outputDir" 
+        placeholder="Optional: Enter output directory path" 
+        class="w-full border border-gray-600 bg-gray-700 rounded-md p-2 text-gray-300">
+
+      <button 
+        type="submit" 
+        class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition">
+        Update Directories
+      </button>
+    </form>
+    <div id="configStatus" class="mt-4 text-center text-pink-400"></div>
+
+    <hr class="border-gray-700 my-6">
+
     <!-- File Upload Form -->
     <form 
       hx-post="/files/upload" 
@@ -38,32 +71,26 @@
 
     <!-- Button to load files -->
     <div class="flex gap-4">
-       <button 
-       hx-get="/files/list" 
-       hx-target="#fileList" 
-       hx-swap="innerHTML" 
-       class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition mb-4">
-       Load Files
+      <button 
+        hx-get="/files/list" 
+        hx-target="#fileList" 
+        hx-swap="innerHTML" 
+        class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition mb-4">
+        Load Files
       </button>
       <button
         onclick="window.location.href=`/results/process-resumes`"
         class="bg-pink-800 hover:bg-pink-900 text-white py-2 px-4 rounded-md font-medium transition mb-4"
       >
-      Parse resumes
+        Parse resumes
       </button>
     </div>
 
     <!-- Uploaded file list -->
     <ul id="fileList" class="space-y-3">
       <!-- Dynamically updated content -->
-      <!-- Example File -->
-      <!-- <li class="bg-gray-700 p-3 rounded-md flex items-center justify-between">
-        <span>example.pdf</span>
-        <a href="/path-to-pdf" target="_blank" class="text-pink-800 hover:underline">View</a>
-      </li> -->
     </ul>
   </div>
-
 
 </body>
 </html>

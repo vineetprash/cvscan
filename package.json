@@ -6,8 +6,8 @@
     "nodemon": "npx nodemon build/server/index.js",
     "dev": "node build/server/index.js",
     "build": "npx tsc",
-    "build:app" : "xcopy server\\views build\\server\\views /E /I /Y",
-    "postbuild": "xcopy server\\views build\\server\\views /E /I /Y",
+    "build:app": "xcopy server\\views build\\server\\views /E /I /Y",
+    "postbuild": "xcopy server\\views build\\server\\views /E /I /Y && xcopy .env build\\.env /E /I /Y ",
     "watch": "npx tsc --watch",
     "start": "npx tsc && node build/index.js"
   },
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.33.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-fileupload": "^1.5.1",
