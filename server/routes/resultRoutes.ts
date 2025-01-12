@@ -28,7 +28,7 @@ router.get('/process-resumes', async (req: any, res: any) => {
     }
   
     try {
-    //   await processResumes(inputDir, outputDir);
+      const resultLine = await processResumes(inputDir, outputDir);
   
       // Generate the link to the processed file (processed.csv)
       const fileUrl = `/output/processed.csv`;
@@ -41,7 +41,8 @@ router.get('/process-resumes', async (req: any, res: any) => {
           <a href="${fileUrl}" class="btn btn-success" download>Download Processed File (CSV)</a>
         </div>
       `;
-      res.send(successNotification);  // HTMX will swap this content into the page.
+      // res.send(successNotification);  // HTMX will swap this content into the page.
+      res.json({fileUrl, resultLine});
     } catch (error) {
       console.error('Error processing resumes:', error);
       res.status(500).send('<div class="alert alert-danger">Error processing resumes.</div>');

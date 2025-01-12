@@ -68,6 +68,7 @@ export async function processResumes(inputDir: string, outputDir: string) {
       // copy the pdf file to the new directory, rename it NAME_<filename>.pdf. Replace spaces with underscores.
       let newFileName = result.response.name.replace(/ /g, "_") + "_" + pdfFile;
       fs.copyFileSync(inputDir + "/" + pdfFile, newDir + "/" + newFileName);
+      return resultLine
     } catch (error) {
       console.error("Error processing", pdfFile, error);
     }

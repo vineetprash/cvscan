@@ -16,33 +16,7 @@ const generateFileHtml = (fileName: string): string => {
   return `<li><span class="cursor-pointer" onclick="window.location.href='${filePath}'; " target="_blank">${fileName}</span></li>`;
 };
 
-router.get('/pdf/:filename', (req: any, res: any) => {
-  const { filename } = req.params;
-  const pdfPath = path.join(__dirname, 'uploads', filename);
 
-  // Check if the file exists
-  if (!(path.extname(filename).toLowerCase() === '.pdf')) {
-    return res.status(400).send('Invalid file type.');
-  }
-
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>View PDF</title>
-      <style>
-        body { margin: 0; padding: 0; width: 100%}
-        iframe { width: 100%; height: 100vh; border: none; }
-      </style>
-    </head>
-    <body>
-      <iframe src="/files/pdf/${filename}" title="PDF Viewer"></iframe>
-    </body>
-    </html>
-  `);
-});
 
 
 // Handle file uploads
